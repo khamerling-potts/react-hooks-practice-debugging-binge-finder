@@ -37,11 +37,13 @@ function App() {
     });
   }
 
-  let displayShows = shows;
+  let displayShows = shows.filter((show) =>
+    show.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   if (filterByRating) {
-    displayShows = displayShows.filter((s) => {
-      s.rating.average >= filterByRating;
-    });
+    displayShows = displayShows.filter(
+      (s) => s.rating.average >= filterByRating
+    );
   }
 
   return (
